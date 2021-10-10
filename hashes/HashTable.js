@@ -25,7 +25,6 @@ class HashTable {
   get(key) {
     const hashKey = this._hash(key)
     const currBucket = this.data[hashKey]
-
     if (currBucket) {
       for (let i=0; i < currBucket.length; i++) {
         if (currBucket[i][0] === key) {
@@ -36,10 +35,28 @@ class HashTable {
     return undefined
   } // typically 0(1) | 0(n / k)
 
+  keys() {
+    const keysArray = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if(this.data[i]) {
+        // check of collision
+        if (this.data.length > 1) {
+           for (let j = 0; j < this.data[i].length; j++) {
+             keysArray.push(this.data[i][j][0])
+           }
+         } else {
+             keysArray.push(this.data[i][0][0])
+           }
+      }
+    }
+    return keysArray
+  }
+
 }
 
-const myHashTable = new HashTable(2);
+const myHashTable = new HashTable(50);
 myHashTable.set('grapes', 10000)
-myHashTable.get('grapes')
-myHashTable.set('apples', 9)
+myHashTable.set('apples', 54)
+myHashTable.set('oranges', 2)
 myHashTable.get('apples')
+myHashTable.get('grapes')
