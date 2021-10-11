@@ -16,7 +16,17 @@ class LinkedList {
     this.tail.next = newNode
     this.tail = newNode
     this.length++
-    return this;
+    return this
+  }
+
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: this.head
+    }
+    this.head = newNode
+    this.length++
+    return this
   }
 
 }
