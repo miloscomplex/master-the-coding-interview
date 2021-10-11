@@ -41,27 +41,37 @@ class LinkedList {
     return array
   }
 
-  insert(index, value) {
-    if (index === 0) {
-      this.prepend(value)
-      return this.printList()
-    }
-    const newNode = new Node(value)
+  traverseToIndex(index) {
     let counter = 0
-    let currentNode = this.head;
-    let prevNode;
-    while (counter < index) {
-      prevNode = currentNode
+    let currentNode = this.head
+    while (counter !== index) {
       currentNode = currentNode.next
       counter++
     }
-    prevNode.next = newNode
-    newNode.next = currentNode
+    return currentNode
+  }
+
+  insert(index, value) {
+    if (index === 0) return this.prepend(value);
+    if (index >= this.length) return this.append(value);
+
+    const newNode = new Node(value)
+    const leader = this.traverseToIndex(index-1)
+    const tempPointer = leader.next
+    leader.next = newNode
+    newNode.next = tempPointer
     length++
     return this.printList()
   }
 
-
+  remove(index) {
+    if (index > this.length - 1) return undefined;
+    const leader = this.traverseToIndex(index-1)
+    const removeNode = leader.next
+    leader.next = removeNode.next
+    this.length--
+    return this.printList()
+  }
 
 }
 
