@@ -45,6 +45,7 @@ class DoublyLinkedList {
   }
 
   traverseToIndex(index) {
+    if (index > this.length || index < 0) return undefined;
     let counter = 0
     let currentNode = this.head
     while (counter !== index) {
