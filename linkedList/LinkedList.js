@@ -80,6 +80,8 @@ class LinkedList {
       let second = first.next
       while (second) {
         const temp = second.next
+        // this is the key for the solve
+        // reverse the pointer 
         second.next = first
         first = second
         second = temp
