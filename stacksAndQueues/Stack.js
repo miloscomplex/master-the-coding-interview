@@ -14,35 +14,31 @@ class Stack {
 
   peek() {
     // see top node
-    if (!this.isEmpty()) {
-      return this.top
-    } else {
-      return null
-    }
+    return this.top
   }
 
   push(value) {
     const newNode = new Node(value)
-    if (this.top) {
-      newNode.next = this.top
-    } else {
+    if (this.length === 0) {
       this.top = newNode
-      this.bottom = this.top
+      this.bottom = newNode
+    } else {
+      const tempPointer = this.top
+      this.top = newNode
+      this.top.next = tempPointer
     }
-    this.top = newNode
     this.length++
     return this
   }
 
   pop() {
     if (!this.top) return null;
+
     const tempNode = this.top
-    if (tempNode.next === null) {
+    if (this.top === this.bottom) {
       this.bottom = null
-      this.top = null
-    } else {
-      this.top = tempNode.next
     }
+    this.top = tempNode.next
     this.length--
     return tempNode
   }
