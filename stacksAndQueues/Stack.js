@@ -14,6 +14,7 @@ class Stack {
 
   peek() {
     // see top node
+    // no need to check for null
     return this.top
   }
 
