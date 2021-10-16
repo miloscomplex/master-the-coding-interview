@@ -1,30 +1,29 @@
 class Node {
-  constructor(value){
+  constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
-class Stack {
+class Queue {
   constructor(){
-    this.top = null;
-    this.bottom = null;
+    this.first = null;
+    this.last = null;
     this.length = 0;
   }
   peek() {
   }
-  push(value){
+  enqueue(value){
   }
-  pop(){
+  dequeue(){
   }
-  //isEmpty
+  //isEmpty;
 }
 
-const myStack = new Stack();
+const myQueue = new Queue();
 
 
-
-
-//Discord
-//Udemy
-//google
+//Joy
+//Matt
+//Pavel
+//Samir
