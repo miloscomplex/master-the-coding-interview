@@ -1,8 +1,7 @@
-
-var MyQueue = function(size=0, top=null, bottom=null) {
-    this.size = size
-    this.top = top
-    this.bottom = bottom
+var MyQueue = function() {
+    this.size = 0
+    this.top = null
+    this.bottom = null
 };
 
 /**
@@ -11,45 +10,44 @@ var MyQueue = function(size=0, top=null, bottom=null) {
  */
 MyQueue.prototype.push = function(x) {
     const myNode = {'value': x, 'next': null}
-    if (obj.size === 0) {
-        obj.top = myNode
-        obj.bottom = obj.top
+    if (this.size === 0) {
+        this.top = myNode
+        this.bottom = this.top
     } else {
-        obj.bottom.next = myNode
-        obj.bottom = myNode
+        this.bottom.next = myNode
+        this.bottom = myNode
     }
-    //MyQueue.bottom.myNode.next = myNode
-    obj.size ++
-    return obj
+    this.size ++
+    return this
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.pop = function() {
-    const temp = obj.top
-    if (obj.size === 1) {
-        obj.top = obj.top.next
-        obj.bottom = obj.top
+    const temp = this.top
+    if (this.size === 1) {
+        this.top = this.top.next
+        this.bottom = this.top
     } else {
-        obj.top = temp.next
+        this.top = temp.next
     }
-    obj.size--
-    return temp
+    this.size--
+    return temp.value
 };
 
 /**
  * @return {number}
  */
 MyQueue.prototype.peek = function() {
-    return obj.top
+    return this.top.value
 };
 
 /**
  * @return {boolean}
  */
 MyQueue.prototype.empty = function() {
-    if (obj.size === 0) {
+    if (this.size === 0) {
         return true
     } else {
         return false
@@ -65,8 +63,8 @@ MyQueue.prototype.empty = function() {
  * var param_4 = obj.empty()
  */
 
-const obj = new MyQueue()
-obj.push(34)
-obj.push(55)
-obj.push(9)
-obj.push(22)
+const newQueue = new MyQueue()
+newQueue.push(34)
+newQueue.push(55)
+newQueue.push(9)
+newQueue.push(22)
