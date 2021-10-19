@@ -11,14 +11,23 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  insert(value){
-    //Code here
+  insert(value) {
+    while (this.left !== null || this.right !==null)
   }
 
-  lookup(value){
-    //Code here
+  lookup(value) {
+    let currentNode = this.root
+    while (currentNode.value !== value) {
+      if (currentNode.value < this.left) {
+        currentNode = this.left
+      } else {
+        currentNode = this.right
+      }
+
+    }
+    return currentNode
   }
-  
+
   // remove
 }
 
